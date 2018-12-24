@@ -124,7 +124,7 @@ app.factory('get_userser', function ($http, $location, sessionService, $rootScop
                 });
 
             }else{
-                var $promise = $http.get("http://13.233.205.216/gulshan.php?sportid=" +sportId+ "&eventid=" + matchId);
+                var $promise = $http.get("http://159.65.146.249/sanjuApiOdds?sportid=" +sportId+ "&eventid=" + matchId);
                 $promise.then(function (response) {
                     ;
                     var MarketRunner = $filter('filter')(response.data.result, { id: MarketId })[0];

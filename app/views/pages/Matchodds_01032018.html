@@ -163,18 +163,18 @@
                                         <span> {{(getSumValPnL((RunnerValue|filter:{"SelectionId":marketInfo.selectionId})[0].winValue,(RunnerValue|filter:{"SelectionId":marketInfo.selectionId})[0].lossValue)+(marketInfo.selectionId==selectionId?(formStatus==0?+((priceVal*stake)-stake):-(priceVal*stake)+stake):(formStatus==0?-stake:+stake)))|number:2}}</span>
                                      </div> 
                                 </td> 
-                                <!--<td class="back unhighlighted" ng-class="{'callYlCss':marketInfo.ex.availableToBack[2].SELECTED}">-->
-                                     <!--<strong class="odds">{{getOddCalcVal(marketInfo.ex.availableToBack[2].price,1)}}</strong>-->
-                                     <!--<div class="size">-->
-                                        <!--<span>{{getOddCalcVal(marketInfo.ex.availableToBack[2].size,2)}}</span>-->
-                                    <!--</div>-->
-                                 <!--</td> -->
-                                <!--<td class="back unhighlighted" ng-class="{'callYlCss':marketInfo.ex.availableToBack[1].SELECTED}"> -->
-                                     <!--<strong class="odds">{{getOddCalcVal(marketInfo.ex.availableToBack[1].price,1)}}</strong> -->
-                                    <!--<div class="size">-->
-                                        <!--<span>{{getOddCalcVal(marketInfo.ex.availableToBack[1].size,2)}}</span>-->
-                                        <!--</div>-->
-                                 <!--</td>-->
+                                <td class="back unhighlighted" ng-class="{'callYlCss':marketInfo.ex.availableToBack[2].SELECTED}">
+                                     <strong class="odds">{{getOddCalcVal(marketInfo.ex.availableToBack[2].price,1)}}</strong>
+                                     <div class="size">
+                                        <span>{{getOddCalcVal(marketInfo.ex.availableToBack[2].size,2)}}</span>
+                                    </div>
+                                 </td> 
+                                <td class="back unhighlighted" ng-class="{'callYlCss':marketInfo.ex.availableToBack[1].SELECTED}"> 
+                                     <strong class="odds">{{getOddCalcVal(marketInfo.ex.availableToBack[1].price,1)}}</strong> 
+                                    <div class="size">
+                                        <span>{{getOddCalcVal(marketInfo.ex.availableToBack[1].size,2)}}</span>
+                                        </div>
+                                 </td>
                                  <td class="back" ng-class="{'callYlCss':marketInfo.ex.availableToBack[0].SELECTED}" ng-click="getOddValue($event,marketInfo.ex.availableToBack[0].price+oddsLimit,marketInfo.MstCode,0,GetMarketBackLayDataSelectionName[$index].runnerName,marketInfo.selectionId)">
                                       <strong class="odds">{{getOddCalcVal(marketInfo.ex.availableToBack[0].price,1)}}</strong>
                                      <div class="size">
@@ -188,7 +188,7 @@
                                         <span>{{getOddCalcVal(marketInfo.ex.availableToLay[0].size,2)}}</span>
                                     </div>
                                  </td> 
-                                <!--<td class="lay unhighlighted" ng-class="{'callCYanCss':marketInfo.ex.availableToLay[1].SELECTED}" >
+                                <td class="lay unhighlighted" ng-class="{'callCYanCss':marketInfo.ex.availableToLay[1].SELECTED}" >
                                     <strong class="odds" ng-model="testModel">{{getOddCalcVal(marketInfo.ex.availableToLay[1].price,1)}}</strong>
                                     <div class="size">
                                         <span>{{getOddCalcVal(marketInfo.ex.availableToLay[1].size,2)}}</span>
@@ -200,7 +200,7 @@
                                     <div class="size">
                                         <span>{{getOddCalcVal(marketInfo.ex.availableToLay[2].size,2)}}</span>
                                     </div>
-                                </td>-->
+                                </td>
 
                             </tr>
                         </tbody>

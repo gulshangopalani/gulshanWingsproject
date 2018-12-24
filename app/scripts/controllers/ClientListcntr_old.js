@@ -21,7 +21,7 @@ angular.module('ApsilonApp').controller('ClientListcntr',['$scope','$mdDialog', 
     $scope.GetUserList();
     /*$scope.refresh_tree = function () {
         $http.get('Lstsavemstrcontroller/lstSaveMaster/' + sessionService.get('user_id') + '/' + sessionService.get('type') + '/' + sessionService.get('HelperID') + '/' + sessionService.get('Helperype')).success(function (data, status, headers, config) {
-            ;
+            
             $scope.treeNodes = data.tree;
         });
     }

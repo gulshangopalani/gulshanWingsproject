@@ -72,7 +72,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
     $scope.countdown = function() {
         debugger;
         //stopped = $timeout(function() {
-            $http.get("http://13.233.205.216/gulshan.php?sportid=4" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){          
+            $http.get("http://159.65.146.249/sanjuApiOdds?sportid=4" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){          
                 $scope.apiFancy = response.data;
             }).then(function(apiFancy){
                 $scope.FancyArray = { "items": [] };                                
@@ -110,7 +110,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
     };
     function updateFancy(){
         fancyTimer = $timeout(function (){            
-            $http.get("http://13.233.205.216/gulshan.php?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){
+            $http.get("http://159.65.146.249/sanjuApiOdds?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){
                 $scope.apiFancy = response.data;
                 if($scope.apiFancy.result.length >0){                                   
                     for (var i = 0; i < $scope.apiFancy.result.length; i++) {
@@ -304,7 +304,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
                 }else{
                     $http({
                         method: "GET",
-                        url: "http://13.233.205.216/gulshan.php?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId
+                        url: "http://159.65.146.249/sanjuApiOdds?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId
                     }).success(function (data) {                       
                         selectedRunner = null;
                         var MarketRunner = $filter('filter')(data.result, { id: $stateParams.MarketId })[0];
@@ -692,7 +692,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
     $scope.place_bet = function() {
         $http({ method: 'POST',url: 'UsereventCntr/matchMarketLst/', data: { matchId: $stateParams.MatchId,sportsId: $stateParams.sportId,user_id: sessionService.get('user_id')}, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function(data) {
             $scope.PLAYPAUSE=$filter('filter')(data.MatchMarket, { Id: $scope.MarketId })[0].IsPlay;
-            if($scope.PLAYPAUSE==0 && $scope.stake >=1000){
+            if($scope.PLAYPAUSE==0 && $scope.stake >=100){
                 $scope.loadingM = true;
                 $http.get('Chipscntrl/checkDeduction/' + sessionService.get('user_id')+"/"+$stateParams.MatchId).then(function(articles){
                    
@@ -769,8 +769,10 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
                 });
             }else if($scope.PLAYPAUSE==1){
                 alert("Market is Pause. Dont Try to place Bet ");
-            }else if($scope.stake < 1000){
-                alert("Min stack 1000...");
+            }else if($scope.stake < 100){
+                // alert("Min stack 100...");
+                (angular.element(document.querySelector("#displayErrorMsg")).removeClass("alert-message"),2000);
+                // document.getElementById("displayErrorMsg").removeAttribute("class : alert-message");
             }
         });
     };
@@ -1142,7 +1144,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
             pointDiff: pointDiff,
             deviceInformation: deviceInformation
         }
-        if(amount >= 10){
+        if(amount >= 1){
             if ($scope.checkValidation(sessionData,IndexVal)) {
                 /*start code for bet delay*/
                 get_userser.getBetDelay(sessionService.get('slctUseID'), function(data) {
@@ -1183,7 +1185,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
         //get_userser.getBetDelay(sessionService.get('slctUseID'), function(data) {
                    // var BetDelay = (parseInt(data) * 1000);
             fancyTimer = $timeout(function (){                 
-                $http.get("http://13.233.205.216/gulshan.php?sportid=4&eventid="+$stateParams.MatchId).then(function successCallback(response){
+                $http.get("http://159.65.146.249/sanjuApiOdds?sportid=4&eventid="+$stateParams.MatchId).then(function successCallback(response){
                     debugger;
                     var marketOdds=response.data;        
                     var resltArray = $filter('filter')(marketOdds.result, { id: $scope.betslipArray.marketId });
@@ -1237,7 +1239,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
                         var DIVICE = deviceDetector.device;
                         var deviceInformation = '"' + " browser: " + deviceDetector.browser + " browser_version :" + deviceDetector.browser_version + "  device: " + DIVICE + "  OS : " + deviceDetector.os + " os_version: " + deviceDetector.os_version + '"';
                         var sessionData = { userId: sessionService.get('user_id'),ParantId: sessionService.get('slctParantID'),loginId: sessionStorage.user_id,betValue: $scope.betslipArray.stack,FancyID: $scope.betslipArray.id,matchId: $stateParams.MatchId,OddValue: $scope.betslipArray.isBack,type: sessionStorage.type,OddsNumber: OddsNumber,TypeID: 2,HeadName: $scope.betslipArray.name,SessInptNo: SessInptNo,SessInptYes: SessInptYes,sportId: $stateParams.sportId,FancyId: $scope.betslipArray.id,pointDiff: pointDiff,deviceInformation: deviceInformation }
-                        if($scope.betslipArray.stack >= 1000){                    
+                        if($scope.betslipArray.stack >= 100){
                             $http({ method: 'POST',url: BASE_URL + 'Lstsavemstrcontroller/save_session_bet',data: sessionData,headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}).success(function(data) {
                                 if(data.error>=0){ 
                                      $scope.fancybetloader=false;                                 
@@ -1251,7 +1253,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
                             });                       
                         }else{
                             $scope.fancybetloader=false;
-                            var message="Min Bet 1000";
+                            var message="Min Bet 100";
                             $scope.fancybetloader=false;
                             alert(""+message);                            
                         }
@@ -1261,6 +1263,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
             },10);
         //});
     }
+    //app/scripts/controllers/user/UserMatchoddscntr_3.js
     $scope.deleteUser = function (betId, userId) {
         var result = confirm("Are you sure want to delete Records Unmatched");
         if (result) {

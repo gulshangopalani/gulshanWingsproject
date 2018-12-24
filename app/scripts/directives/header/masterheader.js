@@ -12,11 +12,15 @@ app.directive('masterheader', ['$location','$http', 'sessionService', '$timeout'
             $scope.$on('$locationChangeStart', function (event, next, current) { 
                 //event.preventDefault(); 
             });
+
+            $scope.load = function() {
+                onResizeWindow();
+            };
             
             
             $scope.RedirectToFancy=function(fancyId,TypeID,MatchID,SportID,matchName){
                 $scope.setValue=fancyId;
-                ;
+                
                 $scope.showvalue = false;
                 $scope.displayFicon=false;
                 if (TypeID==1) {
@@ -79,6 +83,16 @@ app.directive('masterheader', ['$location','$http', 'sessionService', '$timeout'
                     }
                 }
             };
+
+            function onResizeWindow() {
+                if ($window.innerWidth < 768) {
+                    $('.second-navbar').addClass('navbar-fixed-bottom');
+                } else {
+                    $('.second-navbar').removeClass('navbar-fixed-bottom');
+                }
+            }
+
+            angular.element($window).on('resize', onResizeWindow);
             
         }]
     }

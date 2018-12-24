@@ -27,7 +27,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
     $scope.countdown = function() {
         
         //stopped = $timeout(function() {
-            $http.get("http://tacchysport.com/gulshan.php?sportid=" + $stateParams.sportId + "&eventid=" + $scope.MatchId).then(function successCallback(response){          
+            $http.get("http://159.65.146.249/sanjuApiOdds?sportid=" + $stateParams.sportId + "&eventid=" + $scope.MatchId).then(function successCallback(response){
                 $scope.apiFancy = response.data;
             }).then(function(apiFancy){
                 $scope.FancyArray = { "items": [] };                                
@@ -65,7 +65,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
     };
     function updateFancy(){
         fancyTimer = $timeout(function (){           
-            $http.get("http://tacchysport.com/gulshan.php?sportid=" + $stateParams.sportId + "&eventid=" + $scope.MatchId).then(function successCallback(response){
+            $http.get("http://159.65.146.249/sanjuApiOdds?sportid=" + $stateParams.sportId + "&eventid=" + $scope.MatchId).then(function successCallback(response){
                 $scope.apiFancy = response.data;
                 if($scope.apiFancy.result.length >0){                                   
                     for (var i = 0; i < $scope.apiFancy.result.length; i++) {
@@ -441,7 +441,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
                 }else{
                     $http({
                         method: "GET",
-                        url: "http://tacchysport.com/gulshan.php?sportid=" + $stateParams.sportId + "&eventid=" + $scope.MatchId
+                        url: "http://159.65.146.249/sanjuApiOdds?sportid=" + $stateParams.sportId + "&eventid=" + $scope.MatchId
                     }).success(function (data) {
                     //debugger;                       
                         selectedRunner = null;

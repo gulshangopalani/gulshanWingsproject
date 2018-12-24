@@ -5,7 +5,9 @@
 html,
 body
 {
-
+    background-image: url('../../images/Background.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 h1 { font-family: Ubuntu; font-size: 23px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 23px; } h3 { font-family: Ubuntu; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 23px; } p { font-family: Ubuntu; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; } blockquote { font-family: Ubuntu; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; } pre { font-family: Ubuntu; font-size: 11px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; }
@@ -211,7 +213,7 @@ box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.24);
   padding: 0px;
 }
 .example3 .navbar {
-    background-color: #e4e2e2;
+    background-color: #eff0f1;
     position: relative;
     min-height: 50px;
     margin-bottom: 0px!important;
@@ -245,15 +247,16 @@ a.logout {
   padding-left: 10px;
 }
 #nav-1 #main-nav {
-    position:absolute;
-    top:0px;left:0px;
-    width: 160px;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    width: 166px;
     height: 100%;overflow: hidden;
     min-height: 450px; 
     background: #fff;
     border: 1px solid #ddd;
     text-decoration: none;
-    background-color: #e4e2e2;
+    background-color: #eff0f1
 }
 .title {
     font-size: 18px;
@@ -277,6 +280,10 @@ a.logout {
     display: block;
         font-weight: 600;
   }
+.ul li a:hover{
+    background-color: #38396C !important;
+    color: #fff;
+}
   .ul-sub {margin:0px;padding:0px;}
   .ul-sub li{list-style-type:none;width:100%;border-bottom: solid 1px #ccc;}
   .ul-sub li a{   
@@ -332,15 +339,15 @@ a.logout {
 /*NAV BAR-2**************************/
 #nav-2 .main-nav {
     position:absolute;
-    top:0px;left:0px;
-    width: 160px;
+    top:30px;left:0px;
+    width: 166px;
     height: 100%;overflow: hidden;
     min-height: 450px;   
     z-index: 2;display: none;
     background: #fff;
     border: 1px solid #ddd;
     text-decoration: none;
-    background-color: #e4e2e2;
+    background-color: #eff0f1;
 }
 .nav-2 .ul li a{   
     text-align: left;
@@ -355,7 +362,7 @@ a.logout {
 /*NAV BAR-4**************************/
 #nav-4 .main-nav {
     position:absolute;
-    top:0px;left:0px;
+    top:30px;left:0px;
     width: 160px;
     height: 100%;overflow: hidden;
     min-height: 450px;   
@@ -369,7 +376,7 @@ a.logout {
     position:absolute;
     height: 100%;
     width: 100%!important;
-    background-color: #e4e2e2;
+    background-color: #eff0f1;
 }
 /*footer css*/
 .footer
@@ -952,7 +959,32 @@ text-align: left!important;
 .badge {
     border-radius: 3px!important;
 }
+
+.alert-message {
+    display: none;
+}
+
+.displayErrorMsg{
+    word-spacing: -10px;
+    color: #f6130b;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
 @media only screen and (max-width: 768px) {
+    #nav-1 #main-nav {
+        position: absolute;
+        top: 3px;
+        left: 0px;
+        width: 166px;
+    }
+    #nav-2 .main-nav {
+        position: absolute;
+        top: 3px;
+        left: 0px;
+        width: 166px;
+    }
+
   .market-listing-table td.running-cell:nth-child(1) {
     width: 65%;
     min-width: 65%;
@@ -984,6 +1016,9 @@ text-align: left!important;
   padding: 4px!important;
   width: auto;
   margin-left: 0px;
+  min-height: 72px;
+  min-width: 123px;
+  margin-top: -20px;
 }
 .wal-lia-box {
     margin-left: 4px;
@@ -1169,9 +1204,10 @@ ul.sport-high.fancyListDiv li:nth-child(2){
     height: auto!important;
     margin-left: 1px!important;
     display: none;
+    width: 50%;
 }
 .navbar.second-navbar {
-    position: relative;
+    /*position: relative;*/
     min-height: 40px;
     margin-bottom: 5px;
     border: 1px solid transparent;
@@ -1365,12 +1401,16 @@ md-backdrop.md-dialog-backdrop {
 }
 .heading h1
 {
-  margin:0px;
-  font-size: 30px;
+    margin: 0px;
+    font-size: 28px;
+    padding: 6px;
+    color: #38396c;
+
 }
 md-pagination-wrapper {
     width: 100%!important;
     height: 38px!important;
+    background-color: #38396c;;
 }
 md-tabs-canvas {
     position: relative;
@@ -1956,6 +1996,19 @@ input[type="number"].ng-invalid, input[type="text"].ng-invalid {
     #bottomNav .bottom-links {
         font-size: 16px;
     }
+
+
+    #bottomNavMaster a {
+        font-size:16pt;
+        color:#ddd;
+        text-decoration:none;
+    }
+    #bottomNavMaster a:hover {
+        color:white;
+    }
+    #bottomNavMaster .bottom-links {
+        font-size: 16px;
+    }
     .padding {
         padding: -1px 12px!important;
     }
@@ -1993,34 +2046,28 @@ input[type="number"].ng-invalid, input[type="text"].ng-invalid {
     display: none;
     z-index: 20;
 }
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-/*#wrap > .container {
-    padding: 10px 15px 0;
+
+/* for dealer */
+@media screen and (max-width: 760px) {
+    .second-navbar {
+        background: #38396C;
+    }
+
+    .second-navbar .navbar-brand {
+        color: #fff;
+    }
+
+    .sidebar {
+        padding-top: 3px !important;
+    }
+    a.home-logo-pa img
+    {
+        margin-bottom: -24px;
+        height: 70px;
+        margin-top: -24px;
+    }
+    .text-left {
+        text-align: left !important;
+
+    }
 }
-#footer > .container {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.navbar-header {
-    float:none;
-    width:100%;
-    padding:10px;
-}
-.navbar-brand {
-    font-size:20pt;
-    float:none;
-}
-#bottomNav {
-    padding:10px;
-}
-#bottomNav a {
-    font-size:24pt;
-    color:#ddd;
-    text-decoration:none;
-}
-#bottomNav a:hover {
-    color:#fff;
-}*/
-/*bet slip css end*/

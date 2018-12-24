@@ -168,13 +168,13 @@
             <div class="panel-body">
               <!-- {{sportDetail}} -->
               <ul class="sport-high">
-                  <li class="clearfix" ng-repeat="match in sportDetail" ng-show="match.sportname=='Horse Racing' && od.inplay=='OPEN'">
+                  <li class="clearfix" ng-repeat="match in sportDetail" ng-show="match.sportname=='Horse Racing' && od.status=='OPEN'">
                           <!-- {{match}} -->
                            <div class="spor-lft">
 
                              <a ui-sref="userDashboard.{{getUrl(match.TypeID,'match.matchid','match.marketid',match.matchName,match.MstDate,match.SportId)}}" class="left-play">
                               {{match.matchName}}>> {{match.HeadName}}>>{{match.Market}}
-                             <span class="glyphicon glyphicon-check" aria-hidden="true" ng-class="{'mat-stat':(od.inplay =='OPEN')}"></span>
+                             <span class="glyphicon glyphicon-check" aria-hidden="true" ng-class="{'mat-stat':(od.inplay && od.status=='OPEN')}"></span>
                             </a>
 
                              <div class="right-play">
@@ -184,7 +184,7 @@
 
                             </div>
                           </div>
-                          <div class="spor-rgt" ng-if='od=(oddsDetail|filter:{"marketId":match.marketid})[0]' ng-show='od.inplay=="OPEN"'>
+                          <div class="spor-rgt" ng-if='od=(oddsDetail|filter:{"marketId":match.marketid})[0]' ng-show='od.status=="OPEN"'>
                             <ul class="odds-detail">
                               <li>
                                 <a  class="cell back-cell">{{getOddCalcVal(od.runners[0].ex.availableToBack[0].price,match.oddsLimit)}}</a>

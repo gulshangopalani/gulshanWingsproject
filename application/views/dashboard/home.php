@@ -17,7 +17,7 @@
                 <td data-label="Match Name"><a href="" ui-sref="dashboard.Matchodds({MatchId: mtchRs.matchId,MarketId:mtchRs.marketId,matchName:mtchRs.matchName,date:mtchRs.date, sportId: mtchRs.SportID })">{{mtchRs.matchName}}</a>
                   <span ui-sref="dashboard.MatchBetList({MatchId: mtchRs.matchId,MarketId:mtchRs.marketId})" class="btn btn-danger btn-sm" style="float: right;">BetList</span>
                 </td>
-                <td data-label="Team A" class="text-center">
+                <td data-label="Team A" class="text-left">
                   <span class="team-lft-txt">{{mtchRs.teamAt |limitTo: 6 }}</span>
                   <strong class="text-right"> 
                       <span ng-if="mtchRs.TeamA>0" style="color:#50bd00;"> {{mtchRs.TeamA|number:2}}</span>
@@ -26,7 +26,7 @@
                   </strong>
                 </td>
          
-                <td data-label="Team B" class="text-center">
+                <td data-label="Team B" class="text-left">
                       <span class="team-lft-txt">{{mtchRs.teamBt| limitTo: 6 }} </span> 
                       <strong class="text-right">
                         <span ng-if="mtchRs.TeamB>0" style="color:#50bd00;">{{mtchRs.TeamB|number:2}}</span>
@@ -35,7 +35,7 @@
                       </strong>
                 </td>
          
-                <td data-label="Draw" class="text-center">
+                <td data-label="Draw" class="text-left">
                    <span class="team-lft-txt">{{mtchRs.teamCt }} &emsp;</span>
                     <strong class="text-right"> 
                       <span ng-if="mtchRs.theDraw>0" style="color:#50bd00;">{{mtchRs.theDraw|number:2}}</span>

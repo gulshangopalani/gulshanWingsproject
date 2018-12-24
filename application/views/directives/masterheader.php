@@ -1,4 +1,4 @@
-   <div>
+   <div ng-init='load()'>
    <div class="example3">
       <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container-fluid">
@@ -6,8 +6,7 @@
             <div class="col-sm-3 col-xs-6">
               <div class="navbar-header ">
                  <a id="mobileDemo" class="button-collapse"><i class="fa fa-bars"></i></a>
-                 <a class="navbar-brand visible-xs" ui-sref="masterDashboard.Home"><img src="app/images/logins.png" alt="logo"></a>
-                  <a class="navbar-brand hidden-xs" ui-sref="masterDashboard.Home"><img src="app/images/logins.png" alt="logo"></a>
+                  <a class="home-logo-pa"" ui-sref="masterDashboard.Home"><img src="app/images/Home_logo.png" alt="logo"></a>
               </div>
             </div>
           <div class="col-sm-9">

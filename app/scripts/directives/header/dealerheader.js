@@ -8,12 +8,15 @@ app.directive('dealerheader', ['$location','$http', 'sessionService', '$timeout'
         replace: true,
         scope: {},
         controller: ['$scope', '$http', 'loginService', '$mdDialog', '$window', 'Dialog', 'sessionService','$interval','get_userser','$state','speech',function ($scope, $http, loginService, $mdDialog, $window, Dialog, sessionService,$interval,get_userser,$state,speech) {
-            
-            $scope.$on('$locationChangeStart', function (event, next, current) { 
+
+            $scope.$on('$locationChangeStart', function (event, next, current) {
                 //event.preventDefault(); 
             });
-            
-            
+
+            $scope.load = function() {
+                onResizeWindow();
+            };
+
             $scope.RedirectToFancy=function(fancyId,TypeID,MatchID,SportID,matchName){
                 $scope.setValue=fancyId;
                 ;
@@ -25,29 +28,29 @@ app.directive('dealerheader', ['$location','$http', 'sessionService', '$timeout'
                 }else if(TypeID==2){
                     $state.go("dashboard.Sessionfancy", { 'matchId': MatchID,'FancyID':fancyId,'TypeID':TypeID,'matchName':matchName,'sportId':SportID });
                 }else if(TypeID==3){
-                   $state.go("dashboard.Khaddalfancy", { 'matchId': MatchID,'FancyID':fancyId,'TypeID':TypeID,'matchName':matchName,'sportId':SportID });
+                    $state.go("dashboard.Khaddalfancy", { 'matchId': MatchID,'FancyID':fancyId,'TypeID':TypeID,'matchName':matchName,'sportId':SportID });
                 }else if(TypeID==4){
-                   $state.go("dashboard.Lastdigit", { 'matchId': MatchID,'FancyID':fancyId,'TypeID':TypeID,'matchName':matchName,'sportId':SportID });
+                    $state.go("dashboard.Lastdigit", { 'matchId': MatchID,'FancyID':fancyId,'TypeID':TypeID,'matchName':matchName,'sportId':SportID });
                 }else if(TypeID==5){
                     $state.go("dashboard.Updown", { 'matchId': MatchID,'FancyID':fancyId,'TypeID':TypeID,'matchName':matchName,'sportId':SportID });
                 }
             }
-           
+
             //for Marque BY Manish
             $scope.ShowMessageOnHeader = function(){
                 $http.get('Betentrycntr/DisplayMsgOnHeader/').success(function (data, status, headers, config) {
-                        //;
-                        $scope.diplayMsg = data.marqueMsg[0].Marquee;
-                        
+                    //;
+                    $scope.diplayMsg = data.marqueMsg[0].Marquee;
+
                 });
             }
             var msgHeader=function check_Fancydisplay() {
-                $scope.ShowMessageOnHeader();             
+                $scope.ShowMessageOnHeader();
             }
             var timerGo12 = $interval(msgHeader, 30000);
-             $scope.ShowMessageOnHeader();
+            $scope.ShowMessageOnHeader();
             //for Marque BY Manish
-           
+
             $("#mobileDemo").click(function() {
                 if($(".mainSite").hasClass('activeSideNav')){
                     $(".mainSite").removeClass('activeSideNav');
@@ -66,20 +69,29 @@ app.directive('dealerheader', ['$location','$http', 'sessionService', '$timeout'
                 loginService.logout();
             };
             function onResize() {
-                //alert("go to fun");
-                // uncomment for only fire when $window.innerWidth change   
+                // uncomment for only fire when $window.innerWidth change
                 if (scope.width !== $window.innerWidth) {
                     if ($window.width() > 768) {
                         $push.addClass('pushmenu-push-toright');
                         $puslft.addClass('pushmenu-open');
                     } else {
-
+                        $('.second-navbar').addClass('navbar-fixed-bottom');
                         $push.removeClass('pushmenu-push-toright');
                         $puslft.removeClass('pushmenu-open');
                     }
                 }
             };
-            
+
+            function onResizeWindow() {
+                if ($window.innerWidth < 768) {
+                    $('.second-navbar').addClass('navbar-fixed-bottom');
+                } else {
+                    $('.second-navbar').removeClass('navbar-fixed-bottom');
+                }
+            }
+
+            angular.element($window).on('resize', onResizeWindow);
+
         }]
     }
 }]);

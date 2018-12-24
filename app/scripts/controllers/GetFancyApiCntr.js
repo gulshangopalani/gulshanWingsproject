@@ -1,7 +1,7 @@
 app.controller('GetFancyApiCntr', function ($scope, $http, $stateParams, Dialog, $rootScope, sessionService,$filter) {
     $scope.MatchId=$stateParams.MatchId; 
     $scope.GetFancy=function(){
-        $http.get("http://tacchysport.com/gulshan.php?sportid=4&eventid="+$stateParams.MatchId).then(function successCallback(response){
+        $http.get("http://159.65.146.249/sanjuApiFancy?sportid=4&eventid="+$stateParams.MatchId).then(function successCallback(response){
                 //; gulshan gopal
                 $scope.apiFancy = response.data.result;
         }).then(function(apiFancy){                     
