@@ -120,7 +120,7 @@
                     
                 </div>
             <!-- End of Football Api -->
-        </div>  
+        </div>
         <div>
         <div class="matchodd-header">
             <div class="row">
@@ -261,17 +261,11 @@
                                 <div class="col-sm-5 col-xs-5 padding" ng-init="stake=0">
                                     <label>stake</label>
                                     <input type="number" min="1" max="500000" ng-model="stake" class=" form-control" />
-
                                     <input type="hidden" name="userId" id="userId" value="{{UserId}}">
-
                                     <input type="hidden" name="ParantId" id="ParantId" value="{{ParantId}}">
-
                                     <input type="hidden" name="loginId" id="loginId" value="{{loginId}}">
-
                                     <input type="hidden" name="selectionId" id="selectionId" value="{{selectionId}}">
-
                                     <input type="hidden" name="matchId" id="matchId" value="{{MatchId}}">
-
                                     <input type="hidden" name="isback" id="isback" ng-value="formStatus">
 
                                     <input type="hidden" name="MarketId" id="MarketId" value="{{MarketId}}">
@@ -284,18 +278,18 @@
                                 </div>
                             </div>
                         </div>
-                        <span class = "alert_message" >Gulshan</span>
+                        <span class = "glyphicon glyphicon-alert alert-info alert-message displayErrorMsg" id = "displayErrorMsg">Minimum Stake is 100 points</span>
                         <div class="col-sm-12 padding">
-                            <div ng-if="$root.MyLenth==0">                                     
+                            <div ng-if="$root.MyLenth==0">
                         <button type="button" ng-click="stakeVal(1000,selectionId)" class="btn num-btns">1000</button>
                         <button type="button" ng-click="stakeVal(3000,selectionId)" class="btn num-btns">3000</button>
                         <button type="button" ng-click="stakeVal(5000,selectionId)" class="btn num-btns">5000</button>
                         <button type="button" ng-click="stakeVal(10000,selectionId)" class="btn num-btns">10000</button>
                         <button type="button" ng-click="stakeVal(25000,selectionId)" class="btn num-btns">25000</button>
                         <button type="button" ng-click="stakeVal(50000,selectionId)" class="btn num-btns">50000</button>
-						 <button type="button" ng-click="stakeVal(100000,selectionId)" class="btn num-btns">100000</button>
-						  <button type="button" ng-click="stakeVal(200000,selectionId)" class="btn num-btns">200000</button>
-						   <button type="button" ng-click="stakeVal(300000,selectionId)" class="btn num-btns">300000</button>
+                        <button type="button" ng-click="stakeVal(100000,selectionId)" class="btn num-btns">100000</button>
+						<button type="button" ng-click="stakeVal(200000,selectionId)" class="btn num-btns">200000</button>
+						<button type="button" ng-click="stakeVal(300000,selectionId)" class="btn num-btns">300000</button>
                         <button type="button" ng-click="stakeValReset(0)" class="btn clr-btn">Clear</button>
                         <button type="button" class="btn cancel-sel" ng-click="reset_all_selection()">Cancel</button>
                         <button type="submit" ng-disabled="(!betUserSubmit.$valid) || btnPlaceDis" class="btn place-bet" ng-click="place_bet()">Place bets</button>

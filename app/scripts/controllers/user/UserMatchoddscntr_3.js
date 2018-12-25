@@ -70,7 +70,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
 
 
     $scope.countdown = function() {
-        debugger;
+        //debugger;
         //stopped = $timeout(function() {
             $http.get("http://159.65.146.249/sanjuApiOdds?sportid=4" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){          
                 $scope.apiFancy = response.data;
@@ -1071,7 +1071,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
         });
     }
     $scope.fancyBetSlip = function(event,line,price,Fancy,isFancy,isBack) {
-        debugger;
+        //debugger;
        $scope.betslipArray={};
        if(isBack==0){
             backlayName ="Back";
@@ -1180,13 +1180,13 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
         }
     };
     $scope.placeFancyBet=function(){
-        debugger;
+       // debugger;
          $scope.fancybetloader=true;
         //get_userser.getBetDelay(sessionService.get('slctUseID'), function(data) {
                    // var BetDelay = (parseInt(data) * 1000);
             fancyTimer = $timeout(function (){                 
                 $http.get("http://159.65.146.249/sanjuApiOdds?sportid=4&eventid="+$stateParams.MatchId).then(function successCallback(response){
-                    debugger;
+                   // debugger;
                     var marketOdds=response.data;        
                     var resltArray = $filter('filter')(marketOdds.result, { id: $scope.betslipArray.marketId });
                     if($scope.betslipArray.isBack==1 && resltArray[0].statusLabel==""){

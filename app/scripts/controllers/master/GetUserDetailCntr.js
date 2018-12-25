@@ -8,7 +8,7 @@ angular.module('ApsilonApp').controller('GetDetailsCntr',['$scope','$mdDialog', 
     $scope.display="true";
     $scope.GetUserList=function(){
         $http.get(BASE_URL+'Lstsavemstrcontroller/getDataById/'+sessionService.get('user_id')+'/'+sessionService.get('type')).then(function(response) {
-            debugger;
+            //debugger;
             $scope.UserList=response.data;
         });
     }
@@ -168,7 +168,7 @@ angular.module('ApsilonApp').controller('GetDetailsCntr',['$scope','$mdDialog', 
     /*end of user Deatails*/
      /*start code for free chips*/
     $scope.freechips = function (id) {
-        debugger;
+        //debugger;
             $http.get('Chipscntrl/getChipDataById/' + $scope.PID).success(function (data, status, headers, config) {
                 $scope.cipsData = data.betLibility;
                 $scope.pFreeChipVal = $scope.cipsData[0].FreeChip;
@@ -193,10 +193,10 @@ angular.module('ApsilonApp').controller('GetDetailsCntr',['$scope','$mdDialog', 
         });
     };
     function showChipsInOutController($scope, $mdDialog, prntScope, node) {
-        debugger;
+       // debugger;
             /*start code for free chips*/
         $scope.freechips1 = function (id) {
-            debugger;
+           // debugger;
                 $http.get('Chipscntrl/getChipDataById/' + sessionService.get('user_id')).success(function (data, status, headers, config) {
                     $scope.cipsData = data.betLibility;
                     $scope.pFreeChipVal = $scope.cipsData[0].FreeChip;
@@ -215,7 +215,7 @@ angular.module('ApsilonApp').controller('GetDetailsCntr',['$scope','$mdDialog', 
         prntScope.freechips(node.usecode);
         $scope.freechips1(node.usecode);
         $scope.FreeChipsSubmit = function (Chip, Type, UserID, Free, userType) {
-            debugger;
+          //  debugger;
             prntScope.FreeChipsSubmit(Chip, Type, UserID, Free, userType,node);
             Chip.ChipVal = "";
             Chip.Ref = "";

@@ -2068,6 +2068,15 @@ input[type="number"].ng-invalid, input[type="text"].ng-invalid {
     }
     .text-left {
         text-align: left !important;
+    }
 
+    .alert-message {
+        display: none;
+    }
+    .navbar-header {
+        height: 60px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
     }
 }
