@@ -1,7 +1,7 @@
 'use strict';
 angular.module('ApsilonApp').controller('homedashboard',['$scope', '$http', 'sessionService', '$timeout', 'deviceDetector','$filter', function ($scope, $http, sessionService, $timeout, deviceDetector,$filter) {
-   
-    
+
+
     $scope.getMatchDetail = function (matchId) {
         $scope.sportDetail = angular.isUndefinedOrNull;
         $scope.oddsDetail = angular.isUndefinedOrNull;
@@ -106,7 +106,6 @@ angular.module('ApsilonApp').controller('homedashboard',['$scope', '$http', 'ses
                try {  $scope.message = data.status.message;console.log("working "+data.status.message); }
                catch (e) { console.log(data.status.error); }
         });
-        console.log("working ");
     }
     $scope.getUrl = function (type, matchid, marketid, matchname, matchdate,SportId)//sourabh 161231
     {

@@ -85,6 +85,11 @@ app.directive('masterheader', ['$location','$http', 'sessionService', '$timeout'
             };
 
             function onResizeWindow() {
+                $(document).ready(function () {
+                    $("nav").find("li").on("click", "a", function () {
+                        $('.navbar-collapse.in').collapse('hide');
+                    });
+                });
                 if ($window.innerWidth < 768) {
                     $('.second-navbar').addClass('navbar-fixed-bottom');
                 } else {

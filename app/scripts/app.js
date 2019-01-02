@@ -139,6 +139,22 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
               }
           }
       })
+        .state('userDashboard.Inplay', {
+            url: '/Inplay',
+            controller: 'homedashboard',
+            templateUrl: 'dashboard/userDashboard',
+            resolve: {
+                loadMyFiles: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'ApsilonApp',
+                        files: [
+                            'app/scripts/directives/dashboard/homedashboard.js?ver=1.5',
+                            'app/scripts/controllers/Lstcontroller.js?ver='+Math.random(),
+                        ]
+                    })
+                }
+            }
+        })
       .state('userDashboard.Matchodds', {
           templateUrl: 'app/views/pages/user/UserMatchodds_1.html?ver='+Math.random(),
           controller: 'Matchoddscntr',
@@ -2176,7 +2192,6 @@ app.run(function (loginService, sessionService) {
 
       }else{
         loginService.logout(function (response) {
-              console.log("logout");
           });
       }
     }

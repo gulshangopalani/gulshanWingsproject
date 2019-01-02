@@ -65,9 +65,9 @@ $query_builder = true;
 
 $db['default'] = array(
     'dsn' => '', 
-    'hostname' => 'wingsexchangedb.mysql.database.azure.com',
-    'username' => 'gulshangopalani@wingsexchangedb',
-    'password' => 'India@12345',
+    'hostname' => 'localhost',
+    'username' => 'root',
+    'password' => '',
     'database' => 'betphub365', 
     'dbdriver' => 'mysqli',
     'dbprefix' => '',

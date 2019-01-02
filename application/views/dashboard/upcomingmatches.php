@@ -15,7 +15,7 @@
       <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
           <ul class="sport-high">
-                  <li class="clearfix" ng-repeat="match in sportDetail" ng-show="match.sportname=='Cricket' && od.status=='OPEN' && od.inplay==true">
+                  <li class="clearfix" ng-repeat="match in sportDetail" ng-show="match.sportname=='Cricket' && od.status=='OPEN' && od.inplay==false">
 
                           <div class="spor-lft">
                              <a ui-sref="userDashboard.{{getUrl(match.TypeID,'match.matchid','match.marketid',match.matchName,match.MstDate,match.SportId)}}" class="left-play">
@@ -67,7 +67,7 @@
       <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
         <div class="panel-body">
           <ul class="sport-high">
-                  <li class="clearfix" ng-repeat="match in sportDetail" ng-show="match.sportname=='Soccer' && od.status=='OPEN' && od.inplay==true">
+                  <li class="clearfix" ng-repeat="match in sportDetail" ng-show="match.sportname=='Soccer' && od.status=='OPEN' && od.inplay==false">
                           <!-- {{match.sportname}} -->
                           <div class="spor-lft">
                              <a ui-sref="userDashboard.{{getUrl(match.TypeID,'match.matchid','match.marketid',match.matchName,match.MstDate,match.SportId)}}" class="left-play">
@@ -120,7 +120,7 @@
       <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
         <div class="panel-body">
           <ul class="sport-high">
-                  <li class="clearfix" ng-repeat="match in sportDetail" ng-show="match.sportname=='Tennis' && od.status=='OPEN' && od.inplay==true">
+                  <li class="clearfix" ng-repeat="match in sportDetail" ng-show="match.sportname=='Tennis' && od.status=='OPEN' && od.inplay==false">
                           <!-- {{match.sportname}} -->
                            <div class="spor-lft">
                              <a ui-sref="userDashboard.{{getUrl(match.TypeID,'match.matchid','match.marketid',match.matchName,match.MstDate,match.SportId)}}" class="left-play">

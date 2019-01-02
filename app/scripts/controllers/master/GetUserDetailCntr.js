@@ -223,7 +223,7 @@ angular.module('ApsilonApp').controller('GetDetailsCntr',['$scope','$mdDialog', 
         $scope.hide = function () { $mdDialog.hide(); };
     }
     $scope.FreeChipsSubmit = function (Chip, Type, UserID, Free, userType,node) {
-                debugger;
+                // debugger;
                 var userName = node.usename;
                 var ParantName = sessionService.get('slctUseName');
                 var LoginId = sessionService.get('user_id');
@@ -284,7 +284,7 @@ angular.module('ApsilonApp').controller('GetDetailsCntr',['$scope','$mdDialog', 
         });
     };
     function showChangePwdController($scope, $mdDialog, prntScope, node, sessionService) {
-        debugger;
+        // debugger;
         /*$scope.currentScope1 = currentScope1;*/
         $scope.node = node;
         $scope.chngPgetType = sessionService.get('type');
@@ -307,7 +307,7 @@ angular.module('ApsilonApp').controller('GetDetailsCntr',['$scope','$mdDialog', 
     }
     /*end of change user Password*/
     $scope.changeUserPasswordSubmit = function (user, node) {
-        debugger;
+        // debugger;
         var userId = user.userId;                
         var newPassword = user.newPassword;
         var cnfnewPassword = user.cnfnewPassword;

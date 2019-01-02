@@ -65,6 +65,24 @@ h1 { font-family: Ubuntu; font-size: 23px; font-style: normal; font-variant: nor
     margin-top: 0;
     margin-bottom: 0px;
 }
+
+.upcomingmatches {
+    font-size: 15px;
+    font-weight: bold;
+    color: #444;
+    padding: 25px 15px;
+    border-bottom: solid 1px #ccc;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+
+.panel-default>.panel-heading {
+    background-color: #38396C!important;
+    border-color: #38396C!important;
+    color: white;
+}
+
 .market-listing-table td.running-cell:nth-child(1) {
     width: 50%;
     min-width: 50%;
@@ -355,7 +373,7 @@ a.logout {
     font-size: 12px;
     text-transform: capitalize;
     color: #333;
-    padding: 8px 15px;
+    padding: 8px 2px;
     display: block;
   }
 
@@ -375,7 +393,7 @@ a.logout {
     border: 1px solid #ccc;
     position:absolute;
     height: 100%;
-    width: 100%!important;
+    width: 170px;
     background-color: #eff0f1;
 }
 /*footer css*/
@@ -881,7 +899,7 @@ padding:0!important;
   color: #ccc;
 }
 .client-form {
-padding:10px;
+    padding:10px;
 }
 .dealerdashboard {
     padding: 0px 10px;
@@ -977,12 +995,16 @@ text-align: left!important;
         top: 3px;
         left: 0px;
         width: 166px;
+        height: -webkit-fill-available;
+
     }
     #nav-2 .main-nav {
         position: absolute;
         top: 3px;
         left: 0px;
         width: 166px;
+        height: -webkit-fill-available;
+
     }
 
   .market-listing-table td.running-cell:nth-child(1) {
@@ -2020,6 +2042,9 @@ input[type="number"].ng-invalid, input[type="text"].ng-invalid {
     }
     .right-play span {
         font-size: 11px;
+    }
+    .client-form {
+        padding-bottom: 50px;
     }
 }
 
