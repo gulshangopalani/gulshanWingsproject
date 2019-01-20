@@ -36,18 +36,18 @@
 
       <usersidebar></usersidebar>
 
-      <div id="footer">
+       <div id="footer">
               <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
                   <div class="row" id="bottomNav">
-                       <div class="col-xs-4 text-center"><a ui-sref="userDashboard.Home"><i class="fa fa-home"></i><br><span class="bottom-links">Home</span></a></div>
-                       <div class="col-xs-4 text-center"><a ui-sref="userDashboard.myMarketCntr"><i class="fa fa-trophy"></i><br><span class="bottom-links">Running Bets</span></a></div>
-                       <div class="col-xs-4 text-center"><a ng-click="goToInplay();"><i class="fa fa-user-circle"></i><br><span class="bottom-links">In-Play</span></a></div>
+                       <div class="col-xs-3 text-center"><a ui-sref="userDashboard.Home({inplay: false})"><i class="fa fa-home"></i><br><span class="bottom-links">Home</span></a></div>
+                       <div class="col-xs-3 text-center"><a ui-sref="userDashboard.myMarketCntr"><i class="fa fa-trophy"></i><br><span class="bottom-links">My Bet</span></a></div>
+                       <div class="col-xs-3 text-center"><a ui-sref="userDashboard.Home({inplay: true})"><i class="fa fa-paper-plane"></i><br><span class="bottom-links">In-Play</span></a></div>
+                       <div class="col-xs-3 text-center"><a ui-sref="userDashboard.Home({inplay: false})"><i class="fa fa-user-circle"></i><br><span class="bottom-links">Next Matches</span></a></div>
                   </div>
               </div>
           </div>
 
     </div>
-
 
 
 

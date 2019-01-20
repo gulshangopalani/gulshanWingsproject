@@ -1,5 +1,5 @@
 ﻿'use strict';//sourabh 13-dec-2016
-angular.module('ApsilonApp').controller('userdashboard','upcomingmatches', function ($scope, $http, sessionService, $timeout, deviceDetector, $filter) {
+angular.module('ApsilonApp').controller('userdashboard', function ($scope, $http, sessionService, $timeout, deviceDetector, $filter) {
     /*start slider In Master dashboard */
     var slider = $('.bxslider').bxSlider({
         mode: 'horizontal', //mode: 'fade',
@@ -201,4 +201,5 @@ angular.module('ApsilonApp').controller('userdashboard','upcomingmatches', funct
         $timeout.cancel(marketTimer);
         marketTimer = angular.isUndefinedOrNull;
     });//sourabh 161229
+
 });

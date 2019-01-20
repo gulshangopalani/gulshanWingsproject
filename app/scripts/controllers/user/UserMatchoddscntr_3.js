@@ -67,11 +67,97 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
         $scope.GetScore();
     }, 8000);
 
+    $scope.getFancyPerSecond = function() {
+        $interval(function (){
+            $http.get("http://13.234.26.15:8080/fancy?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){
+                $scope.apiFancy = response.data.result;
+            }).then(function(apiFancy){
+                $http.get("Lstsavemstrcontroller/GetFancyOnHeader/"+$stateParams.MatchId).then(function successCallback(response){
+                    $scope.fancyFromDb = response.data.getFancy;
+                    $scope.apiFancy.find(function(item,index){
+                        if($scope.fancyFromDb.length >0){
+                            var fileterVal = $filter('filter')($scope.fancyFromDb, { marketId: item.id })[0];
+                            if(fileterVal != angular.isUndefinedOrNull){
+                                item.selected=true;
+                            }else{
+                                item.selected=false;
+                                if(item.btype == "LINE") {
+                                    $scope.saveFancyInit(item).then(function(msg) {
+                                        item.selected = true;
+                                    });
+                                }
+                            }
+                        }else{
+                            item.selected=false;
+                            if(item.btype == "LINE") {
+                                $scope.saveFancyInit(item).then(function(msg) {
+                                    item.selected = true;
+                                });
+                            }
+                        }
+                    });
+                });
+            });
+        }, 3000);
+    };
+
+    $scope.saveFancyInit = function (FancyData) {
+        // debugger;
+        if(FancyData.runners[0].back.length == 0 || FancyData.runners[0].back[0].price==100){
+            var PointDiff=10;
+        }else{
+            var PointDiff= 100 - parseInt(FancyData.runners[0].back[0].price);
+        }
+
+        var ipYes = 100;
+        var rangeYes = 100;
+        if(FancyData.runners.length > 0) {
+            if(FancyData.runners[0].back.length > 0) {
+                ipYes = FancyData.runners[0].back[0].line;
+                rangeYes = FancyData.runners[0].back[0].price;
+            }
+        }
+
+        var ipNo = 100;
+        var rangeNo = 100;
+        if(FancyData.runners.length > 0) {
+            if(FancyData.runners[0].lay.length > 0) {
+                ipNo = FancyData.runners[0].lay[0].line;
+                rangeNo = FancyData.runners[0].lay[0].price;
+            }
+        }
+
+        var formData = {
+            HeadName: FancyData.name,
+            remarks: 'N/A',
+            mid: $stateParams.MatchId,
+            fancyType: 2,
+            date: FancyData.lastUpdateTime,
+            time: FancyData.lastUpdateTime,
+            inputYes: ipYes,
+            inputNo: ipNo,
+            sid:FancyData.eventTypeId,
+            NoLayRange: rangeNo,
+            YesLayRange: rangeYes,
+            RateDiff:1,
+            MaxStake:9999999999999,
+            PointDiff:PointDiff,
+            marketId: FancyData.id,
+            isApi : 1,
+        }
+        var url = BASE_URL + "Createmastercontroller/SaveFancy";
+        return $http.post(url, formData).success(function (response) {
+            console.log(response.message);
+        });
+
+    }
+
+    $scope.getFancyPerSecond();
 
 
     $scope.countdown = function() {
         //stopped = $timeout(function() {
-        $http.get("http://13.233.205.216/gulshan.php?sportid=4" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){
+        $http.get("http://13.234.26.15:8080/fancy?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){
             $scope.apiFancy = response.data;
         }).then(function(apiFancy){
             $scope.FancyArray = { "items": [] };
@@ -82,14 +168,44 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
                     if($scope.FancyFromDb.length >0){
                         var fileterVal = $filter('filter')($scope.FancyFromDb, { marketId: item.id })[0];
                         if( fileterVal != angular.isUndefinedOrNull && item.btype =='LINE'){
+
+                            var backLine = "";
+                            if(item.runners.length > 0) {
+                                if(item.runners[0].back.length > 0) {
+                                    backLine = item.runners[0].back[0].line;
+                                }
+                            }
+
+                            var backPrice = "";
+                            if(item.runners.length > 0) {
+                                if(item.runners[0].back.length > 0) {
+                                    backPrice = item.runners[0].back[0].price;
+                                }
+                            }
+
+                            var layLine = "";
+                            if(item.runners.length > 0) {
+                                if(item.runners[0].lay.length > 0) {
+                                    layLine = item.runners[0].lay[0].line;
+                                }
+                            }
+
+                            var layPrice = "";
+                            if(item.runners.length > 0) {
+                                if(item.runners[0].lay.length > 0) {
+                                    layPrice = item.runners[0].lay[0].price;
+                                }
+                            }
+
+
                             $scope.FancyArray.items.push({
                                 id : fileterVal.ID,
                                 marketId : item.id,
                                 name : item.name,
-                                backLine: item.runners[0].back[0].line,
-                                backPrice: item.runners[0].back[0].price,
-                                layLine: item.runners[0].lay[0].line,
-                                layPrice: item.runners[0].lay[0].price,
+                                backLine: backLine,
+                                backPrice: backPrice,
+                                layLine: layLine,
+                                layPrice: layPrice,
                                 status: item.status,
                                 maxLiabilityPerBet: item.maxLiabilityPerBet,
                                 maxLiabilityPerMarket: item.maxLiabilityPerMarket,
@@ -107,9 +223,12 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
         //$scope.countdown();
         // }, 10000);
     };
+
+
+
     function updateFancy(){
         fancyTimer = $timeout(function (){
-            $http.get("http://13.233.205.216/gulshan.php?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){
+            $http.get("http://13.234.26.15:8080/fancy?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId).then(function successCallback(response){
                 $scope.apiFancy = response.data;
                 if($scope.apiFancy.result.length >0){
                     for (var i = 0; i < $scope.apiFancy.result.length; i++) {
@@ -303,7 +422,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
                 }else{
                     $http({
                         method: "GET",
-                        url: "http://13.233.205.216/gulshan.php?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId
+                        url: "http://13.234.26.15:8080/fancy?sportid=" + $scope.SPORTID + "&eventid=" + $scope.MatchId
                     }).success(function (data) {
                         selectedRunner = null;
                         var MarketRunner = $filter('filter')(data.result, { id: $stateParams.MarketId })[0];
@@ -506,8 +625,8 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
             $timeout.cancel(marketTimer);
             marketTimer = angular.isUndefinedOrNull;
             $rootScope.$broadcast('changeSidebar_Market', {});
-            if (sessionService.get('type') == "3")
-                $state.go('userDashboard.Home');
+            //if (sessionService.get('type') == "3")
+                //$state.go('userDashboard.Home');
         }
 
     };
@@ -1181,7 +1300,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
         //get_userser.getBetDelay(sessionService.get('slctUseID'), function(data) {
         // var BetDelay = (parseInt(data) * 1000);
         fancyTimer = $timeout(function (){
-            $http.get("http://13.233.205.216/gulshan.php?sportid=4&eventid="+$stateParams.MatchId).then(function successCallback(response){
+            $http.get("http://13.234.26.15:8080/fancy?sportid=4&eventid="+$stateParams.MatchId).then(function successCallback(response){
                 var marketOdds=response.data;
                 var resltArray = $filter('filter')(marketOdds.result, { id: $scope.betslipArray.marketId });
                 if($scope.betslipArray.isBack==1 && resltArray[0].statusLabel==""){
@@ -1293,7 +1412,7 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
             $scope.result= response.result;
 
             angular.forEach($scope.result, function(item){
-                //   console.log(item.ID);  
+                //   console.log(item.ID);
                 if(item.autoActive == 0)
                 {
                     $scope.fancyAutoSetToUserPannel(item.ID)
@@ -1304,23 +1423,14 @@ app.controller('Matchoddscntr', ['$scope', '$http', '$stateParams', 'sessionServ
 
     }
 
-
-
-
-
-
     /*$scope.getFancyList = function() {
         get_userser.getSessionFancy($stateParams.MatchId, 4, function(response) {
-            $scope.FancyData = response;            
+            $scope.FancyData = response;
         });
     }
     $scope.getFancyList();*/
 
     setInterval(function(){
-
         $scope.checkautofancyactive();
-
-
-
     }, 1000)
 }]);

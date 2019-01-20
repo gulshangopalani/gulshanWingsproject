@@ -5,6 +5,7 @@
 html,
 body
 {
+
     background-image: url('../../images/Background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -393,7 +394,7 @@ a.logout {
     border: 1px solid #ccc;
     position:absolute;
     height: 100%;
-    width: 170px;
+    width: 166px;
     background-color: #eff0f1;
 }
 /*footer css*/
@@ -2072,6 +2073,228 @@ input[type="number"].ng-invalid, input[type="text"].ng-invalid {
     z-index: 20;
 }
 
+/*
+ScoreBoard CSS
+*/
+
+
+.inplayMatchDetail {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+.inplayMatchDetail > .match-detail-title, .header-title{
+    position: relative;
+    border-bottom: none;
+}
+.inplayMatchDetail > .match-detail-title{
+    background-color: #860a21;
+    margin-top: 0;
+    padding: 0 10px;
+    color: #fff;
+    cursor: pointer;
+}
+.inplayMatchDetail > .match-detail-title h2, .inplayMatchDetail > .match-detail-title span{
+    color: #ffffff !important;
+}
+.inplayMatchDetail > .match-detail-title h2, .header-title h2{
+    font-size: 24px;
+    font-weight: normal;
+    display: inline-block;
+    color: #333333;
+    line-height: 51px;
+    margin: 0;
+}
+.inplayMatchDetail > .match-detail-title h2 i{
+    color: #333333;
+    font-size: 14px;
+    float: left;
+    margin-top: 20px;
+    margin-right: 8px;
+}
+.header-title {
+    border-bottom: 1px solid #ccc;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.header-title h2{
+    line-height: 50px;
+    margin: 0;
+}
+.header-title span {
+    float: right;
+    line-height: 50px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.inplayMatchDetail > .match-detail-title span i {
+    position: absolute;
+    right: 10px;
+    top: 19px;
+    color: #ffffff;
+    font-size: 16px;
+    left: auto;
+}
+.panel-title.collapsed span > i {
+    transform: rotate(180deg);
+}
+.match-detail-title.changeToggleArrow span i{
+    transform: rotate(180deg);
+}
+.inplayMatchDetail > .match-detail-header {
+    border: 1px solid #ddd;
+    display: flex;
+    padding: 0 10px;
+    padding-top: 10px;
+    border-width: 1px 1px 0 1px;
+}
+.inplayMatchDetail > .match-detail-content{
+    border: 1px solid #ddd;
+    display: flex;
+    padding: 0 10px;
+    border-width: 0 1px 0;
+    padding-bottom: 10px;
+    min-height: 165px;
+}
+.inplayMatchDetail > .match-detail-header > div, .inplayMatchDetail > .match-detail-content > div {
+    flex: 1;
+    width: 50%;
+}
+.inplayMatchDetail > .match-detail-header .toss h2 {
+    color: #333;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: normal;
+    margin:0 0 10px;
+}
+.inplayMatchDetail > .match-detail-header .toss p {
+    margin: -6px 0 6px !important;
+    font-weight: bold;
+}
+.inplayMatchDetail > .match-detail-header table {
+    margin-bottom: 6px;
+    width: 100%;
+    text-align: center;
+}
+.inplayMatchDetail > .match-detail-header table th:not(:last-child),  .inplayMatchDetail > .match-detail-header table td:not(:last-child) {
+    border-right: 1px solid #ddd;
+    padding: 6px;
+    font-size: 12px;
+    line-height: 17px;
+}
+.inplayMatchDetail > .match-detail-content .over p {
+    cursor: default;
+    width: 99.9%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.inplayMatchDetail > .match-detail-content .over p,  .inplayMatchDetail > .match-detail-content .over .over-detail {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-bottom: 6px;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail > div {
+    line-height: 20px;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .balls {
+    flex-grow: 1;
+    margin: 0 0 6px 5px;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .balls li {
+    display: inline-block;
+    font-weight: bold;
+    border-radius: 50%;
+    min-width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 10px;
+    margin-left: 3px;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .INFIELDBOUNDARY_4 {
+    background-color: #2d90d5;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .INFIELDBOUNDARY_6 {
+    background-color: #601c78;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .INFIELDBOUNDARY_0{
+    background-color: #999999;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .balls .WIDE,
+.inplayMatchDetail > .match-detail-content .over .over-detail .balls .WIDE_Wd{
+    background-color: #c2ad7b;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .balls .LEGBYE,
+.LEGBYE_1L{
+    background-color: #c2ad7b;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .INFIELDBOUNDARY_1, .inplayMatchDetail > .match-detail-content .over .over-detail .INFIELDBOUNDARY_2 ,
+.inplayMatchDetail > .match-detail-content .over .over-detail .INFIELDBOUNDARY_3 , .inplayMatchDetail > .match-detail-content .over .over-detail .INFIELDBOUNDARY_5{
+    background-color: #47a23c;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .INFIELDBOUNDARY  {
+    background-color: #47a23c;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .balls .WICKET,
+.inplayMatchDetail > .match-detail-content .over .over-detail .balls .WICKET_W{
+    background-color: #c9362b;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .runs-score {
+    display: flex;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .runs-score div {
+    padding: 0 5px 0 0;
+    line-height: 20px;
+}
+.inplayMatchDetail > .match-detail-content .over .over-detail .runs-score div::before {
+    content: '|';
+    color: #ddd;
+    padding: 0 5px 0 0;
+}
+.match-detail-content > div:last-child {
+    margin-left: 10px;
+}
+.inplayMatchDetail > .match-detail-content .row-highlight td:first-child {
+    text-transform: uppercase;
+}
+.inplayMatchDetail > .match-detail-content table td:first-child {
+    width: 40%;
+}
+table th, table td {
+    padding: 6px;
+}
+table{
+    width: 100%;
+}
+.inplayMatchDetail > .match-detail-content table td{
+    font-size: 12px;
+    line-height: 17px;
+}
+.inplayMatchDetail > .match-detail-content .row-highlight td {
+    background-color: #fde8ec;
+}
+.matchDetail .market-row table td{
+    height: 43px;
+}
+.market-row table td.back.unhighlighted{
+    background-color: #e3f3fe;
+}
+.market-row table td.lay.unhighlighted{
+    background-color: #fdeef2;
+}
+
+
+
+
+
+
 /* for dealer */
 @media screen and (max-width: 760px) {
     .second-navbar {
@@ -2103,5 +2326,9 @@ input[type="number"].ng-invalid, input[type="text"].ng-invalid {
         position: relative;
         bottom: 0;
         width: 100%;
+    }
+
+    .fancy-table table > tbody > tr > td.lay {
+        padding: 10px;
     }
 }

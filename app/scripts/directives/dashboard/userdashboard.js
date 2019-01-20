@@ -1,5 +1,5 @@
 ﻿﻿'use strict';//sourabh 13-dec-2016
-angular.module('ApsilonApp').controller('userdashboard','upcomingmatches',['$scope', '$http', 'sessionService', '$timeout', 'deviceDetector','$filter', function ($scope, $http, sessionService, $timeout, deviceDetector,$filter) {
+angular.module('ApsilonApp').controller('userdashboard',['$scope', '$http', 'sessionService', '$timeout', 'deviceDetector','$filter', function ($scope, $http, sessionService, $timeout, deviceDetector,$filter) {
     /*start slider In Master dashboard */
    
     /*end of slider*/

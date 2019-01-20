@@ -323,69 +323,71 @@
 </div>
 
 <!-- start code for Fancy -->
-    
-   
+
     <div class="fancyMarketTable" ng-if="SPORTID==4">
-                     <div class="session_run">
-                        <table class="table fancy-table apl-table">
-                           <thead>
-                              <tr>
-                                 <th class="market-name">Session Runs <button ng-click="countdown();">Refresh SessionFancy</button></th>
-                                 <th class="lay">No</th>
-                                 <th class="back">Yes</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                              <tr ng-repeat="Fancy in FancyArray.items">
-                                 <td class="market-name">
-                                    <div class="event-name">{{Fancy.name}}</div>
-                                    <div class="selection-pnl">
-                                    </div>
-                                 </td>
-                                 <td class="main-container" colspan="6" ng-class="{'SUSPENDED':'suspend-box','Ball Running':'ball-msg-box1'}[Fancy.statusLabel]">
-                                    <div ng-if="Fancy.statusLabel=='Ball Running'" class="ball-msg-box1">
-                                       <h1>{{Fancy.statusLabel}}</h1>
-                                    </div>
-                                    <div ng-if="Fancy.statusLabel=='SUSPENDED'" class="suspend-box">
-                                       <h1>{{Fancy.statusLabel}}</h1>
-                                    </div>
-                                    <div>
-                                       <div class="odds-container">
-                                          <table class="fancy-table apl-table">
-                                             <tbody>
-                                                <tr>
-                                                   <td class="lay show-size" ng-click="fancyBetSlip($event,Fancy.layLine,Fancy.layPrice,Fancy,1,1)">
-                                                      <strong class="odds">{{Fancy.layLine}} </strong>
-                                                      <div class="size">
-                                                         <span> {{Fancy.layPrice}} </span>
-                                                      </div>
-                                                   </td>
-                                                   <td class="back show-size" ng-click="fancyBetSlip($event,Fancy.backLine,Fancy.backPrice,Fancy,1,0)">
-                                                      <strong class="odds">{{Fancy.backLine}}</strong>
-                                                      <div class="size">
-                                                         <span> {{Fancy.backPrice}} </span>
-                                                      </div>
-                                                   </td>
-                                                   <!-- <td colspan="2" class="odds-placeholder hidden-xs">
-                                                      <span class="max-liability">
-                                                      Max Bet:{{Fancy.maxLiabilityPerBet}}
-                                                      </span>
-                                                      <span class="max-liability">
-                                                      Max Mkt:{{Fancy.maxLiabilityPerMarket}}
-                                                      </span>
-                                                   </td> -->
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                       </div>
-                                    </div>
-                                 </td>
-                              </tr>
-                           </tbody>
-                        </table>
-                     </div>
-                     <!-- {{FancyArray}} -->
-                  </div>
+        <div class="session_run">
+            <table class="table fancy-table apl-table">
+                <thead>
+                <tr>
+                    <th class="market-name">Session Runs</th>
+                    <th class="lay">No</th>
+                    <th class="back">Yes</th>
+                </tr>
+                </thead>
+                   <tbody>
+                      <tr ng-repeat="Fancy in FancyArray.items" class="ng-scope">
+                         <td class="market-name" ng-click="getfancyLadder(Fancy)" data-toggle="modal" data-target="#pandlTable">
+                            <div class="event-name">{{Fancy.name}}</div>
+                            <div class="selection-pnl ng-binding" style="color: RED;">
+                                Max Exposure : {{}}
+                            </div>
+                         </td>
+                         <td class="main-container" colspan="6" ng-class="{'SUSPENDED':'suspend-box','Ball Running':'ball-msg-box1'}[Fancy.statusLabel]">
+                            <div ng-if="Fancy.statusLabel=='Ball Running'" class="ball-msg-box1">
+                               <h1>{{Fancy.statusLabel}}</h1>
+                            </div>
+                            <div ng-if="Fancy.statusLabel=='SUSPENDED'" class="suspend-box">
+                               <h1>{{Fancy.statusLabel}}</h1>
+                            </div>
+                            <div>
+                               <div class="odds-container">
+                                  <table class="fancy-table apl-table">
+                                     <tbody>
+                                        <tr>
+                                           <td class="lay show-size" ng-click="fancyBetSlip($event,Fancy.layLine,Fancy.layPrice,Fancy,1,1)">
+                                              <strong class="odds">{{Fancy.layLine}} </strong>
+                                              <div class="size">
+                                                 <span> {{Fancy.layPrice}} </span>
+                                              </div>
+                                           </td>
+                                           <td class="back show-size" ng-click="fancyBetSlip($event,Fancy.backLine,Fancy.backPrice,Fancy,1,0)">
+                                              <strong class="odds">{{Fancy.backLine}}</strong>
+                                              <div class="size">
+                                                 <span> {{Fancy.backPrice}} </span>
+                                              </div>
+                                           </td>
+                                           <!-- <td colspan="2" class="odds-placeholder hidden-xs">
+                                              <span class="max-liability">
+                                              Max Bet:{{Fancy.maxLiabilityPerBet}}
+                                              </span>
+                                              <span class="max-liability">
+                                              Max Mkt:{{Fancy.maxLiabilityPerMarket}}
+                                              </span>
+                                           </td> -->
+                                        </tr>
+
+                                     </tbody>
+                                  </table>
+                               </div>
+                            </div>
+                         </td>
+                      </tr>
+                      <tr class="rowSeparater"></tr>
+                   </tbody>
+            </table>
+         </div>
+         <!-- {{FancyArray}} -->
+      </div>
 <!-- end the code of Fancy -->
 <!-- start Fancy Betslip -->
 <div class="visible-xs">

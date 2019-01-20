@@ -3,6 +3,7 @@ var app = angular.module('ApsilonApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstra
 app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $window) {
     $ocLazyLoadProvider.config({ debug: false, events: true, });
     $urlRouterProvider.otherwise('/login');
+    // $locationProvider.html5Mode(true);
    /* document.addEventListener( "contextmenu", function(e) {
       //
       console.log(e);
@@ -123,24 +124,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
               }
           }
       })
-      .state('userDashboard.Home', {
-          url: '/Home',
-          controller: 'homedashboard',
-          templateUrl: 'dashboard/userDashboard',
-          resolve: {
-              loadMyFiles: function ($ocLazyLoad) {
-                  return $ocLazyLoad.load({
-                      name: 'ApsilonApp',
-                      files: [
-                            'app/scripts/directives/dashboard/homedashboard.js?ver=1.5',
-                            'app/scripts/controllers/Lstcontroller.js?ver='+Math.random(),
-                      ]
-                  })
-              }
-          }
-      })
-        .state('userDashboard.Inplay', {
-            url: '/Inplay',
+        .state('userDashboard.Home', {
+            url: '/Home?inplay',
             controller: 'homedashboard',
             templateUrl: 'dashboard/userDashboard',
             resolve: {
@@ -154,8 +139,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
                     })
                 }
             }
-        })
-      .state('userDashboard.Matchodds', {
+        })       .state('userDashboard.Matchodds', {
           templateUrl: 'app/views/pages/user/UserMatchodds_1.html?ver='+Math.random(),
           controller: 'Matchoddscntr',
           url: '/matchOdds?MatchId&&MarketId&&matchName&&date&&sportId',

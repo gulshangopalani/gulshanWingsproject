@@ -16,6 +16,7 @@
              <tr ng-repeat="mtchRs in matchResult">
                 <td data-label="Match Name"><a href="" ui-sref="dashboard.Matchodds({MatchId: mtchRs.matchId,MarketId:mtchRs.marketId,matchName:mtchRs.matchName,date:mtchRs.date, sportId: mtchRs.SportID })">{{mtchRs.matchName}}</a>
                   <span ui-sref="dashboard.MatchBetList({MatchId: mtchRs.matchId,MarketId:mtchRs.marketId})" class="btn btn-danger btn-sm" style="float: right;">BetList</span>
+                  <span ng-click="deleteMatchOdds(mtchRs.matchId)" class="btn btn-danger btn-sm" style="float: right; margin-right: 18px;">Delete Match</span>
                 </td>
                 <td data-label="Team A" class="text-left">
                   <span class="team-lft-txt">{{mtchRs.teamAt |limitTo: 6 }}</span>
